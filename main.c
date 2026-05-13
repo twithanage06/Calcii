@@ -13,13 +13,13 @@
 #define RESET "\x1b[0m"
 
 void help() {
-  char *commands[] = {"\x1b[1mGENERAL FUNCTIONALITY --\x1b[0m",
+  char *commands[] = {"\x1b[1mGENERAL FUNCTIONALITY\x1b[0m --",
                       "\x1b[1mh\x1b[0m - Generate a list of commands possible",
                       "\x1b[1mq\x1b[0m - Quit the program\n",
-                      "\x1b[1mEQUATION FLAGS --\x1b[0m",
+                      "\x1b[1mEQUATION FLAGS\x1b[0m --",
                       "\x1b[1mFor all [Equation] please format it with no "
                       "spaces\x1b[0m\n-- \x1b[1mE.g: "
-                      "3+2-4*5/6\x1b[0m\n",
+                      "(3+2)-4*5/(6^2)\x1b[0m\n",
                       "\x1b[1ma [Equation] \x1b[0m- Do arithmetic(BODMAS) "
                       "calculations with the "
                       "equation inputted"};
@@ -62,8 +62,13 @@ int main() {
       free(result_eq);
       break;
     default:
-      printf(RED "Not a valid command. Please type \x1b[1m'h'\x1b[0mto get a "
-                 "list of commands");
+      printf(RED "Not a valid command. Please type \x1b[1m'h'" RESET RED
+                 " to get a "
+                 "list of commands" RESET);
+      int c;
+      while ((c = getchar()) != '\n' && c != EOF)
+        ;
+      break;
     }
   }
   free(eq);
