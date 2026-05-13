@@ -45,8 +45,8 @@ float power(float base, int pwr) {
     product = product * base;
     i++;
   }
-  print_working(base, (float)absPower, product, 5);
   if (pwr < 0) {
+    print_working(base,(float)absPower, product, 5);
     product = divide(1, product);
   }
   print_working(base, (float)pwr, product, 5);
